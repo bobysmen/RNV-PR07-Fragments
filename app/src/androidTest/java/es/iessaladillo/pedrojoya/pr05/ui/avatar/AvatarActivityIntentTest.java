@@ -26,8 +26,8 @@ import static org.hamcrest.Matchers.is;
 public class AvatarActivityIntentTest {
 
     @Rule
-    public final IntentsTestRule<AvatarActivity> testRule = new IntentsTestRule<>(
-            AvatarActivity.class, true, false);
+    public final IntentsTestRule<FragmentAvatarActivity> testRule = new IntentsTestRule<>(
+            FragmentAvatarActivity.class, true, false);
 
     @Before
     public void setup() {

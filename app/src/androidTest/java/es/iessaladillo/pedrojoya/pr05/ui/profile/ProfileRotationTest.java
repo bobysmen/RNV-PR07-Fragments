@@ -42,7 +42,7 @@ public class ProfileRotationTest {
     @Test
     public void shouldHaveSameAvatarAfterRotation() {
         onView(withId(R.id.imgAvatar)).perform(click());
-        // Perform click on AvatarActivity to send result and finish.
+        // Perform click on FragmentAvatarActivity to send result and finish.
         onView(withId(R.id.imgAvatar2)).perform(click());
         onView(withId(R.id.mnuSelect)).perform(click());
         Rotation.rotateScreen(testRule.getActivity());

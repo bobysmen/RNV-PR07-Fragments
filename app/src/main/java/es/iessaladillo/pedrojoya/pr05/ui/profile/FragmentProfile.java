@@ -1,7 +1,5 @@
 package es.iessaladillo.pedrojoya.pr05.ui.profile;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,14 +21,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import es.iessaladillo.pedrojoya.pr05.R;
-import es.iessaladillo.pedrojoya.pr05.data.local.model.User;
 import es.iessaladillo.pedrojoya.pr05.databinding.FragmentProfileBinding;
-import es.iessaladillo.pedrojoya.pr05.ui.avatar.AvatarActivity;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 import static es.iessaladillo.pedrojoya.pr05.data.local.Database.getInstance;
@@ -99,10 +93,10 @@ public class FragmentProfile extends Fragment {
         });
 
 //        b.imgAvatar.setOnClickListener(v -> {
-//            AvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
+//            FragmentAvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
 //        });
 //        b.lblAvatar.setOnClickListener(v -> {
-//            AvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
+//            FragmentAvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
 //        });
         //OnEditorActionListener IME
         b.include.txtWeb.setOnEditorActionListener((v, actionId, event) -> {
@@ -387,10 +381,10 @@ public class FragmentProfile extends Fragment {
 //        });
 //
 //        imgAvatar.setOnClickListener(v -> {
-//            AvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
+//            FragmentAvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
 //        });
 //        lblAvatar.setOnClickListener(v -> {
-//            AvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
+//            FragmentAvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
 //        });
 //        //OnEditorActionListener IME
 //        txtWeb.setOnEditorActionListener((v, actionId, event) -> {
@@ -549,8 +543,8 @@ public class FragmentProfile extends Fragment {
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        if(resultCode==RESULT_OK && requestCode==RC_IMG_AVATAR){
-//            if(data!=null && data.hasExtra(AvatarActivity.EXTRA_AVATAR_TO_MAIN)){
-//                viewModel.setAvatar(data.getParcelableExtra(AvatarActivity.EXTRA_AVATAR_TO_MAIN));
+//            if(data!=null && data.hasExtra(FragmentAvatarActivity.EXTRA_AVATAR_TO_MAIN)){
+//                viewModel.setAvatar(data.getParcelableExtra(FragmentAvatarActivity.EXTRA_AVATAR_TO_MAIN));
 //                imgAvatar.setImageResource(viewModel.getAvatar().getImageResId());
 //                lblAvatar.setText(viewModel.getAvatar().getName());
 //            }

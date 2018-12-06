@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.avatar.AvatarActivity"
+            android:name=".ui.avatar.FragmentAvatarActivity"
             android:label="@string/avatar_label"
             android:parentActivityName=".ui.profile.FragmentProfile"/>
         <activity
