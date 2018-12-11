@@ -1,5 +1,6 @@
 package es.iessaladillo.pedrojoya.pr05.ui.profile;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -25,6 +27,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import es.iessaladillo.pedrojoya.pr05.R;
 import es.iessaladillo.pedrojoya.pr05.databinding.FragmentProfileBinding;
+import es.iessaladillo.pedrojoya.pr05.ui.main.MainActivityViewModel;
+import es.iessaladillo.pedrojoya.pr05.ui.mainViewCard.FragmentViewCard;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 import static es.iessaladillo.pedrojoya.pr05.data.local.Database.getInstance;
@@ -42,6 +46,8 @@ public class FragmentProfile extends Fragment {
 
     FragmentProfileBinding b;
     FragmentProfileViewModel viewModel;
+    MainActivityViewModel viewModelActivity;
+    FragmentProfile.editAvatarListener listener;
 
     @Nullable
     @Override
@@ -53,12 +59,16 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        viewModelActivity = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
         viewModel = ViewModelProviders.of(requireActivity()).get(FragmentProfileViewModel.class);
         setupView();
-        //for change orientation
-//        if (savedInstanceState==null) {
-//            getIntentData();
-//        }
+        if((viewModelActivity.getUser().getValue()!=null) && !viewModelActivity.isNewUser()){
+            //For work with userActual
+            viewModelActivity.setUserActual(viewModelActivity.getUser().getValue());
+            fillFieldsProfile();
+        }else{
+            viewModelActivity.setNewUser(false);
+        }
 
         //OnFocusListener
         b.include.txtName.setOnFocusChangeListener((v, hasFocus) -> setLblBold(b.include.lblName, hasFocus));
@@ -92,12 +102,14 @@ public class FragmentProfile extends Fragment {
             }
         });
 
-//        b.imgAvatar.setOnClickListener(v -> {
-//            FragmentAvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
-//        });
-//        b.lblAvatar.setOnClickListener(v -> {
-//            FragmentAvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
-//        });
+        b.imgAvatar.setOnClickListener(v -> {
+            viewModelActivity.setAvatar(viewModelActivity.getUserActual().getAvatar());
+            listener.editAvatar();
+        });
+        b.lblAvatar.setOnClickListener(v -> {
+            viewModelActivity.setAvatar(viewModelActivity.getUserActual().getAvatar());
+            listener.editAvatar();
+        });
         //OnEditorActionListener IME
         b.include.txtWeb.setOnEditorActionListener((v, actionId, event) -> {
             if(actionId==EditorInfo.IME_ACTION_DONE){
@@ -197,7 +209,34 @@ public class FragmentProfile extends Fragment {
         });
     }
 
-        //Function for Validate
+    private void fillFieldsProfile() {
+        b.imgAvatar.setImageResource(viewModelActivity.getUserActual().getAvatar().getImageResId());
+        b.lblAvatar.setText(viewModelActivity.getUserActual().getAvatar().getName());
+        b.include.txtName.setText(viewModelActivity.getUserActual().getName());
+        b.include.txtEmail.setText(viewModelActivity.getUserActual().getEmail());
+        b.include.txtPhonenumber.setText(viewModelActivity.getUserActual().getPhoneNumber());
+        b.include.txtAddress.setText(viewModelActivity.getUserActual().getAddress());
+        b.include.txtWeb.setText(viewModelActivity.getUserActual().getWeb());
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (editAvatarListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(
+                    context.toString() + " must implement FragmentViewCard.addNewUserListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        listener=null;
+        super.onDetach();
+    }
+
+    //Function for Validate
     private boolean checkName() {
         if(TextUtils.isEmpty(b.include.txtName.getText())){
             b.include.txtName.setError(getString(R.string.main_invalid_data));
@@ -281,21 +320,6 @@ public class FragmentProfile extends Fragment {
 
     }
 
-    //No se si funcionara
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.activity_main, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.mnuSave) {
-            save();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     private void save() {
         boolean isCheckName, isCheckEmail, isCheckPhoneNumber, isCheckAddress, isCheckWeb;
@@ -306,379 +330,25 @@ public class FragmentProfile extends Fragment {
         isCheckWeb=checkWeb();
         if(isCheckName && isCheckEmail && isCheckPhoneNumber && isCheckAddress && isCheckWeb){
             Snackbar.make(b.include.lblName,R.string.main_saved_succesfully, Snackbar.LENGTH_LONG).show();
+            Toast.makeText(requireActivity(),"AAAAAAAAAA",Toast.LENGTH_SHORT).show();
             //intentUserToCard();
         }else{
             Snackbar.make(b.include.lblName, R.string.main_error_saving, Snackbar.LENGTH_LONG).show();
+            Toast.makeText(requireActivity(),"OOOOOOO",Toast.LENGTH_SHORT).show();
         }
     }
 
-    //    public final int RC_IMG_AVATAR=1;
-//    public static final String EXTRA_USER_FROM_CARD="EXTRA_USER_FROM_CARD";
-//    public static final String EXTRA_USER_TO_CARD="EXTRA_USER_TO_CARD";
-//
-//    private TextView lblName;
-//    private EditText txtName;
-//    private TextView lblPhoneNumber;
-//    private EditText txtPhoneNumber;
-//    private TextView lblEmail;
-//    private EditText txtEmail;
-//    private TextView lblAddress;
-//    private EditText txtAddress;
-//    private TextView lblWeb;
-//    private EditText txtWeb;
-//    private ImageView imgEmail;
-//    private ImageView imgPhoneNumber;
-//    private ImageView imgAddress;
-//    private ImageView imgWeb;
-//    private ImageView imgAvatar;
-//    private TextView lblAvatar;
-//
-//    private User userIn;
-//
-//    private FragmentProfileViewModel viewModel;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_profile);
-//        viewModel = ViewModelProviders.of(this).get(FragmentProfileViewModel.class);
-//        setupView();
-//        //for change orientation
-//        if (savedInstanceState==null) {
-//            getIntentData();
-//        }
-//
-//        //OnFocusListener
-//        txtName.setOnFocusChangeListener((v, hasFocus) -> setLblBold(lblName, hasFocus));
-//        txtPhoneNumber.setOnFocusChangeListener((v, hasFocus) -> setLblBold(lblPhoneNumber, hasFocus));
-//        txtEmail.setOnFocusChangeListener((v, hasFocus) -> setLblBold(lblEmail, hasFocus));
-//        txtAddress.setOnFocusChangeListener((v, hasFocus) -> setLblBold(lblAddress, hasFocus));
-//        txtWeb.setOnFocusChangeListener((v, hasFocus) -> setLblBold(lblWeb, hasFocus));
-//        //OnClickListener
-//        imgEmail.setOnClickListener(v -> {
-//            //Check out if exist app
-//            if (existAppToOpen(this, intentEmail(String.valueOf(txtEmail.getText())))) {
-//                startActivity(intentEmail(String.valueOf(txtEmail.getText())));
-//            }
-//        });
-//
-//        imgPhoneNumber.setOnClickListener(v -> {
-//            if(existAppToOpen(this,intentCallPhone(String.valueOf(txtPhoneNumber.getText())))){
-//                startActivity(intentCallPhone(String.valueOf(txtPhoneNumber.getText())));
-//            }
-//        });
-//
-//        imgAddress.setOnClickListener(v -> {
-//            if(existAppToOpen(this, intentAdress(String.valueOf(txtAddress.getText())))){
-//                startActivity(intentAdress(String.valueOf(txtAddress.getText())));
-//            }
-//        });
-//
-//        imgWeb.setOnClickListener(v -> {
-//            if(existAppToOpen(this, intentWebSearch(String.valueOf(txtWeb.getText())))){
-//                startActivity(intentWebSearch(String.valueOf(txtWeb.getText())));
-//            }
-//        });
-//
-//        imgAvatar.setOnClickListener(v -> {
-//            FragmentAvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
-//        });
-//        lblAvatar.setOnClickListener(v -> {
-//            FragmentAvatarActivity.startForResult(FragmentProfile.this, RC_IMG_AVATAR, viewModel.getAvatar());
-//        });
-//        //OnEditorActionListener IME
-//        txtWeb.setOnEditorActionListener((v, actionId, event) -> {
-//            if(actionId==EditorInfo.IME_ACTION_DONE){
-//                save();
-//                InputMethodManager imm =
-//                        (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-//                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-//                return true;
-//            }
-//            return false;
-//        });
-//
-//        //TextChangedListener
-//        txtName.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                checkName();
-//            }
-//        });
-//
-//        txtEmail.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                checkEmail();
-//            }
-//        });
-//
-//        txtPhoneNumber.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                checkPhoneNumber();
-//            }
-//        });
-//
-//        txtAddress.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                checkAddress();
-//            }
-//        });
-//
-//        txtWeb.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                checkWeb();
-//            }
-//        });
-//    }
-//
-//    //Reception user of intent of the mainViewCard
-//    private void getIntentData() {
-//        Intent intent = getIntent();
-//        if(intent!=null && intent.hasExtra(EXTRA_USER_FROM_CARD)){
-//            userIn = intent.getParcelableExtra(EXTRA_USER_FROM_CARD);
-//            //Save in viewModel for in the edit save ID user
-//            viewModel.setUser(userIn);
-//            viewModel.setAvatar(userIn.getAvatar());
-//            fillFieldsProfile(userIn);
-//        }
-//    }
-//
-//    private void fillFieldsProfile(User userIn) {
-//        txtName.setText(userIn.getName());
-//        txtEmail.setText(userIn.getEmail());
-//        txtPhoneNumber.setText(userIn.getPhoneNumber());
-//        txtAddress.setText(userIn.getAddress());
-//        txtWeb.setText(userIn.getWeb());
-//        imgAvatar.setImageResource(viewModel.getAvatar().getImageResId());
-//        lblAvatar.setText(viewModel.getAvatar().getName());
-//    }
-//
-//    private void intentUserToCard(){
-//        Intent intent = new Intent();
-//        User userOut;
-//        //if viewmodel not null then has execute getIntentData() and then has execute startForResult with user
-//        if (viewModel.getUser()!=null) {
-//            userOut = new User(
-//                    viewModel.getUser().getId(), txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumber.getText().toString(), txtAddress.getText().toString(), txtWeb.getText().toString(), viewModel.getAvatar());
-//        //startForResult without user
-//        }else{
-//            //put id -1 to know that i dont know user id. In dataBaseUser change id for list size.
-//            userOut = new User(
-//                    -1, txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumber.getText().toString(), txtAddress.getText().toString(), txtWeb.getText().toString(), viewModel.getAvatar());
-//        }
-//        intent.putExtra(EXTRA_USER_TO_CARD, userOut);
-//        setResult(RESULT_OK, intent);
-//        finish();
-//    }
-//
-//    //startForResult of the MainCardView with user
-//    public static void startForResult(Activity activity, int requestCode, User user){
-//        Intent intent = new Intent(activity, FragmentProfile.class);
-//        intent.putExtra(EXTRA_USER_FROM_CARD, user);
-//        activity.startActivityForResult(intent, requestCode);
-//    }
-//
-//    //starForResultof the MainCardView without user
-//    public static void startForResult(Activity activity, int requestCode){
-//        Intent intent = new Intent(activity, FragmentProfile.class);
-//        activity.startActivityForResult(intent, requestCode);
-//    }
-//
-//    //Recepcion datos
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        if(resultCode==RESULT_OK && requestCode==RC_IMG_AVATAR){
-//            if(data!=null && data.hasExtra(FragmentAvatarActivity.EXTRA_AVATAR_TO_MAIN)){
-//                viewModel.setAvatar(data.getParcelableExtra(FragmentAvatarActivity.EXTRA_AVATAR_TO_MAIN));
-//                imgAvatar.setImageResource(viewModel.getAvatar().getImageResId());
-//                lblAvatar.setText(viewModel.getAvatar().getName());
-//            }
-//        }
-//    }
-//
-//    //Function for Validate
-//    private boolean checkName() {
-//        if(TextUtils.isEmpty(txtName.getText())){
-//            txtName.setError(getString(R.string.main_invalid_data));
-//            lblName.setEnabled(false);
-//            return false;
-//        }else{
-//            lblName.setEnabled(true);
-//            return true;
-//        }
-//    }
-//
-//    private boolean checkEmail() {
-//        if(!isValidEmail(String.valueOf(txtEmail.getText()))){
-//            setDisableIcon(txtEmail, lblEmail, imgEmail);
-//            return false;
-//        }else{
-//            setEnableIcon(lblEmail, imgEmail);
-//            return true;
-//        }
-//    }
-//
-//    private boolean checkPhoneNumber() {
-//        if(!isValidPhone(String.valueOf(txtPhoneNumber.getText()))){
-//            setDisableIcon(txtPhoneNumber, lblPhoneNumber, imgPhoneNumber);
-//            return false;
-//        }else{
-//            setEnableIcon(lblPhoneNumber, imgPhoneNumber);
-//            return true;
-//        }
-//    }
-//
-//    private boolean checkAddress() {
-//        if(TextUtils.isEmpty(txtAddress.getText())){
-//            setDisableIcon(txtAddress, lblAddress, imgAddress);
-//            return false;
-//        }else{
-//            setEnableIcon(lblAddress, imgAddress);
-//            return true;
-//        }
-//    }
-//
-//    private boolean checkWeb() {
-//        if(!isValidUrl(String.valueOf(txtWeb.getText()))){
-//            setDisableIcon(txtWeb, lblWeb, imgWeb);
-//            return false;
-//        }else{
-//            setEnableIcon(lblWeb, imgWeb);
-//            return true;
-//        }
-//    }
-//
-//    private void setEnableIcon(TextView lbl, ImageView img) {
-//        lbl.setEnabled(true);
-//        img.setEnabled(true);
-//    }
-//
-//    private void setDisableIcon(EditText txt, TextView lbl, ImageView img) {
-//        txt.setError(getString(R.string.main_invalid_data));
-//        lbl.setEnabled(false);
-//        img.setEnabled(false);
-//    }
-//
-//
-//    //Function Label Bold
-//    private void setLblBold(TextView lbl, boolean hasFocus){
-//        if(hasFocus){
-//            lbl.setTypeface(Typeface.DEFAULT,Typeface.BOLD);
-//        }else{
-//            lbl.setTypeface(Typeface.DEFAULT, Typeface.NORMAL);
-//        }
-//    }
-//
-//    private void setupView() {
-//        imgAvatar=ActivityCompat.requireViewById(this, R.id.imgAvatar);
-//        lblAvatar=ActivityCompat.requireViewById(this, R.id.lblAvatar);
-//        lblName=ActivityCompat.requireViewById(this,R.id.lblName);
-//        txtName=ActivityCompat.requireViewById(this, R.id.txtName);
-//        lblPhoneNumber=ActivityCompat.requireViewById(this, R.id.lblPhonenumber);
-//        txtPhoneNumber=ActivityCompat.requireViewById(this, R.id.txtPhonenumber);
-//        imgPhoneNumber=ActivityCompat.requireViewById(this, R.id.imgPhonenumber);
-//        lblEmail=ActivityCompat.requireViewById(this, R.id.lblEmail);
-//        txtEmail=ActivityCompat.requireViewById(this, R.id.txtEmail);
-//        imgEmail=ActivityCompat.requireViewById(this, R.id.imgEmail);
-//        lblAddress=ActivityCompat.requireViewById(this, R.id.lblAddress);
-//        txtAddress=ActivityCompat.requireViewById(this, R.id.txtAddress);
-//        imgAddress=ActivityCompat.requireViewById(this, R.id.imgAddress);
-//        lblWeb=ActivityCompat.requireViewById(this, R.id.lblWeb);
-//        txtWeb=ActivityCompat.requireViewById(this, R.id.txtWeb);
-//        imgWeb=ActivityCompat.requireViewById(this, R.id.imgWeb);
-//        //Set default Avatar
-//        if (viewModel.getAvatar()==null) {
-//            viewModel.setAvatar(getInstance().getDefaultAvatar());
-//        }
-//        imgAvatar.setImageResource(viewModel.getAvatar().getImageResId());
-//        imgAvatar.setTag(viewModel.getAvatar().getImageResId());
-//        lblAvatar.setText(viewModel.getAvatar().getName());
-//
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.activity_main, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == R.id.mnuSave) {
-//            save();
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//    private void save() {
-//        boolean isCheckName, isCheckEmail, isCheckPhoneNumber, isCheckAddress, isCheckWeb;
-//        isCheckName=checkName();
-//        isCheckEmail=checkEmail();
-//        isCheckPhoneNumber=checkPhoneNumber();
-//        isCheckAddress=checkAddress();
-//        isCheckWeb=checkWeb();
-//        if(isCheckName && isCheckEmail && isCheckPhoneNumber && isCheckAddress && isCheckWeb){
-//            Snackbar.make(lblName,R.string.main_saved_succesfully, Snackbar.LENGTH_LONG).show();
-//            intentUserToCard();
-//        }else{
-//            Snackbar.make(lblName, R.string.main_error_saving, Snackbar.LENGTH_LONG).show();
-//        }
-//    }
+        @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.mnuSave) {
+            save();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public interface editAvatarListener {
+        void editAvatar();
+    }
 
 }

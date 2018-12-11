@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ import androidx.lifecycle.ViewModelProviders;
 import es.iessaladillo.pedrojoya.pr05.R;
 import es.iessaladillo.pedrojoya.pr05.data.local.Database;
 import es.iessaladillo.pedrojoya.pr05.data.local.model.Avatar;
+import es.iessaladillo.pedrojoya.pr05.ui.main.MainActivityViewModel;
 import es.iessaladillo.pedrojoya.pr05.utils.ResourcesUtils;
 
 public class FragmentAvatarActivity extends Fragment {
@@ -54,6 +56,7 @@ public class FragmentAvatarActivity extends Fragment {
     private TextView lblAvatar6;
 
     private FragmentAvatarActivityViewModel viewModel;
+    private MainActivityViewModel viewModelActivity;
 
     @VisibleForTesting
     public static final String EXTRA_AVATAR = "EXTRA_AVATAR";
@@ -67,69 +70,86 @@ public class FragmentAvatarActivity extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        viewModelActivity = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
         viewModel = ViewModelProviders.of(requireActivity()).get(FragmentAvatarActivityViewModel.class);
         setupView();
-//        getIntentData();
+        getData();
 
         imgAvatar1.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar1.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(0));
         });
 
         imgAvatar2.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar2.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(1));
         });
 
         imgAvatar3.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar3.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(2));
         });
 
         imgAvatar4.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar4.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(3));
         });
 
         imgAvatar5.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar5.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(4));
         });
 
         imgAvatar6.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar6.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(5));
         });
 
         lblAvatar1.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar1.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(0));
         });
 
         lblAvatar2.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar2.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(1));
         });
 
         lblAvatar3.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar3.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(2));
         });
 
         lblAvatar4.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar4.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(3));
         });
 
         lblAvatar5.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar5.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(4));
         });
 
         lblAvatar6.setOnClickListener(v -> {
             allImageColorDefault();
             imgAvatar6.setAlpha(ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha));
+            viewModelActivity.setAvatar(avatares.get(5));
         });
+    }
+
+    private void getData() {
+        setColorSelectAvatar(viewModelActivity.getAvatar().getValue().getId());
     }
 
     private void allImageColorDefault(){
@@ -172,14 +192,6 @@ public class FragmentAvatarActivity extends Fragment {
         lblAvatar6.setText(avatares.get(5).getName());
     }
 
-//    private void getIntentData() {
-//        Intent intent = getIntent();
-//        if(intent!=null && intent.hasExtra(EXTRA_AVATAR_FROM_MAIN)){
-//            avatarIn = intent.getParcelableExtra(EXTRA_AVATAR_FROM_MAIN);
-//            viewModel.setAvatar(avatarIn);
-//            setColorSelectAvatar(viewModel.getAvatar().getId());
-//        }
-//    }
 
     private void setColorSelectAvatar(long id) {
         if(id==CAT1_ID){
@@ -198,40 +210,36 @@ public class FragmentAvatarActivity extends Fragment {
     }
 
 
-    public static void startForResult(Activity activity, int requestCode,
-                                      Avatar avatar) {
-        Intent intent = new Intent(activity, FragmentAvatarActivity.class);
-        intent.putExtra(EXTRA_AVATAR_FROM_MAIN, avatar);
-        activity.startActivityForResult(intent, requestCode);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.activity_main, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.activity_main, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.mnuSelect) {
-            if(imgAvatar1.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
-//                intentAvatarToMain(CAT1_ID);
-            }else if(imgAvatar2.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
-//                intentAvatarToMain(CAT2_ID);
-            }else if(imgAvatar3.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
-//                intentAvatarToMain(CAT3_ID);
-            }else if(imgAvatar4.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
-//                intentAvatarToMain(CAT4_ID);
-            }else if(imgAvatar5.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
-//                intentAvatarToMain(CAT5_ID);
-            }else if(imgAvatar6.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
-//                intentAvatarToMain(CAT6_ID);
-            }
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId() == R.id.mnuSelect) {
+//            if(imgAvatar1.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
+////                intentAvatarToMain(CAT1_ID);
+//                Toast.makeText(getContext(), "Lo he hecho", Toast.LENGTH_SHORT).show();
+//            }else if(imgAvatar2.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
+////                intentAvatarToMain(CAT2_ID);
+//                Toast.makeText(getContext(), "Lo he hecho", Toast.LENGTH_SHORT).show();
+//            }else if(imgAvatar3.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
+////                intentAvatarToMain(CAT3_ID);
+//                Toast.makeText(getContext(), "Lo he hecho", Toast.LENGTH_SHORT).show();
+//            }else if(imgAvatar4.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
+////                intentAvatarToMain(CAT4_ID);
+//            }else if(imgAvatar5.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
+////                intentAvatarToMain(CAT5_ID);
+//            }else if(imgAvatar6.getAlpha()==ResourcesUtils.getFloat(getContext(), R.dimen.avatar_selected_image_alpha)){
+////                intentAvatarToMain(CAT6_ID);
+//            }
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 }
