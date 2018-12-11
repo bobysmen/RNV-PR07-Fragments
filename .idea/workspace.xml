@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLayouts">
-    <shared>
-      <config />
-    </shared>
-  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38e7547e-c31d-4f83-89b5-10b78250903a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/AvatarActivityIntentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/AvatarActivityIntentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/AvatarActivityRotationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/AvatarActivityRotationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/AvatarActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/AvatarActivityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/profile/ProfileIntentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/profile/ProfileIntentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/profile/ProfileRotationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/es/iessaladillo/pedrojoya/pr05/ui/profile/ProfileRotationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/AvatarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/FragmentAvatarActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/AvatarActivityViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/FragmentAvatarActivityViewModel.java" afterDir="false" />
+    <list default="true" id="3cdf401d-d7ee-41d6-87d2-200ca3acd7b3" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/main/MainActivityViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/FragmentAvatarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/FragmentAvatarActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/main/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCardAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCardAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/profile/FragmentProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/profile/FragmentProfile.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,40 +42,58 @@
       <file leaf-file-name="FragmentViewCard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FragmentAvatarActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/FragmentAvatarActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="71" column="10" lean-forward="true" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="26" />
+            <state relative-caret-position="254">
+              <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
               <folding>
-                <element signature="e#2583#2618#0" expanded="true" />
-                <element signature="e#2778#2813#0" expanded="true" />
-                <element signature="e#2973#3008#0" expanded="true" />
-                <element signature="e#3168#3203#0" expanded="true" />
-                <element signature="e#3363#3398#0" expanded="true" />
-                <element signature="e#3558#3593#0" expanded="true" />
-                <element signature="e#3753#3788#0" expanded="true" />
-                <element signature="e#3948#3983#0" expanded="true" />
-                <element signature="e#4143#4178#0" expanded="true" />
-                <element signature="e#4338#4373#0" expanded="true" />
-                <element signature="e#4533#4568#0" expanded="true" />
-                <element signature="e#4728#4763#0" expanded="true" />
+                <element signature="e#2626#2684#0" expanded="true" />
+                <element signature="e#2962#2963#0" expanded="true" />
+                <element signature="e#3009#3010#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FragmentProfile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/profile/FragmentProfile.java">
+      <file leaf-file-name="MainActivityViewModel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/main/MainActivityViewModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2600">
-              <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="102">
+              <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataBaseUser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/data/local/DataBaseUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FragmentViewCardAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCardAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/main/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FragmentUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/utils/FragmentUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -2429,11 +2442,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCardAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCard.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/profile/FragmentProfile.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/FragmentAvatarActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/main/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -2443,15 +2454,11 @@
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2475,7 +2482,7 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="pr05" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RNV-PR07-Fragments" type="1abcf292:AndroidViewProjectNode" />
@@ -2483,7 +2490,6 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="pr05" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="avatar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RNV-PR07-Fragments" type="1abcf292:AndroidViewProjectNode" />
@@ -2506,28 +2512,20 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="pr05" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RNV-PR07-Fragments" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="RNV-PR07-Fragments" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="device.picker.selection" value="721e8d6" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -2563,7 +2561,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -2647,11 +2645,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="38e7547e-c31d-4f83-89b5-10b78250903a" name="Default" comment="" />
-      <created>1544096083718</created>
+      <changelist id="3cdf401d-d7ee-41d6-87d2-200ca3acd7b3" name="Default" comment="" />
+      <created>1544540108163</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1544096083718</updated>
+      <updated>1544540108163</updated>
     </task>
     <servers />
   </component>
@@ -2660,13 +2658,12 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" />
       <window_info id="Build Variants" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Preview" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
@@ -2676,17 +2673,17 @@
       <window_info id="Designer" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info anchor="bottom" id="Build" weight="0.32838285" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
       <window_info anchor="right" id="Gradle" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
@@ -2695,125 +2692,57 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-          <folding>
-            <element signature="e#511#535#0" expanded="true" />
-            <element signature="e#570#595#0" expanded="true" />
-            <element signature="e#635#667#0" expanded="true" />
-            <element signature="e#705#737#0" expanded="true" />
-            <element signature="e#775#807#0" expanded="true" />
-            <element signature="e#1113#1144#0" expanded="true" />
-            <element signature="e#1341#1366#0" expanded="true" />
-            <element signature="e#1407#1432#0" expanded="true" />
-            <element signature="e#1461#1487#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_profile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1313">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-          <folding>
-            <element signature="e#450#482#0" expanded="true" />
-            <element signature="e#677#709#0" expanded="true" />
-            <element signature="e#747#779#0" expanded="true" />
-            <element signature="e#805#827#0" expanded="true" />
-            <element signature="e#1222#1254#0" expanded="true" />
-            <element signature="e#1294#1326#0" expanded="true" />
-            <element signature="e#1352#1374#0" expanded="true" />
-            <element signature="e#2090#2122#0" expanded="true" />
-            <element signature="e#2160#2192#0" expanded="true" />
-            <element signature="e#2218#2241#0" expanded="true" />
-            <element signature="e#2609#2641#0" expanded="true" />
-            <element signature="e#2681#2713#0" expanded="true" />
-            <element signature="e#2813#2836#0" expanded="true" />
-            <element signature="e#3418#3450#0" expanded="true" />
-            <element signature="e#3488#3520#0" expanded="true" />
-            <element signature="e#3558#3590#0" expanded="true" />
-            <element signature="e#3630#3653#0" expanded="true" />
-            <element signature="e#4195#4227#0" expanded="true" />
-            <element signature="e#4253#4282#0" expanded="true" />
-            <element signature="e#4669#4701#0" expanded="true" />
-            <element signature="e#4741#4773#0" expanded="true" />
-            <element signature="e#4878#4907#0" expanded="true" />
-            <element signature="e#4976#5013#0" expanded="true" />
-            <element signature="e#5508#5540#0" expanded="true" />
-            <element signature="e#5578#5610#0" expanded="true" />
-            <element signature="e#5648#5680#0" expanded="true" />
-            <element signature="e#5720#5749#0" expanded="true" />
-            <element signature="e#6285#6317#0" expanded="true" />
-            <element signature="e#6355#6387#0" expanded="true" />
-            <element signature="e#6413#6438#0" expanded="true" />
-            <element signature="e#6815#6847#0" expanded="true" />
-            <element signature="e#6887#6919#0" expanded="true" />
-            <element signature="e#6992#7017#0" expanded="true" />
-            <element signature="e#7552#7584#0" expanded="true" />
-            <element signature="e#7622#7654#0" expanded="true" />
-            <element signature="e#7692#7724#0" expanded="true" />
-            <element signature="e#7764#7789#0" expanded="true" />
-            <element signature="e#8312#8344#0" expanded="true" />
-            <element signature="e#8382#8414#0" expanded="true" />
-            <element signature="e#8440#8461#0" expanded="true" />
-            <element signature="e#8830#8862#0" expanded="true" />
-            <element signature="e#8902#8934#0" expanded="true" />
-            <element signature="e#9003#9024#0" expanded="true" />
-            <element signature="e#9541#9573#0" expanded="true" />
-            <element signature="e#9611#9643#0" expanded="true" />
-            <element signature="e#9681#9713#0" expanded="true" />
-            <element signature="e#9753#9774#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/profile/FragmentProfileViewModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/utils/FragmentUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/OnUserClickListenerEdit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCardAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/mainViewCard/FragmentViewCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/profile/FragmentProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2600">
-          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/avatar/FragmentAvatarActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="71" column="10" lean-forward="true" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="26" />
+        <state relative-caret-position="254">
+          <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
           <folding>
-            <element signature="e#2583#2618#0" expanded="true" />
-            <element signature="e#2778#2813#0" expanded="true" />
-            <element signature="e#2973#3008#0" expanded="true" />
-            <element signature="e#3168#3203#0" expanded="true" />
-            <element signature="e#3363#3398#0" expanded="true" />
-            <element signature="e#3558#3593#0" expanded="true" />
-            <element signature="e#3753#3788#0" expanded="true" />
-            <element signature="e#3948#3983#0" expanded="true" />
-            <element signature="e#4143#4178#0" expanded="true" />
-            <element signature="e#4338#4373#0" expanded="true" />
-            <element signature="e#4533#4568#0" expanded="true" />
-            <element signature="e#4728#4763#0" expanded="true" />
+            <element signature="e#2626#2684#0" expanded="true" />
+            <element signature="e#2962#2963#0" expanded="true" />
+            <element signature="e#3009#3010#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/data/local/DataBaseUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/iessaladillo/pedrojoya/pr05/ui/main/MainActivityViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
         </state>
       </provider>
     </entry>

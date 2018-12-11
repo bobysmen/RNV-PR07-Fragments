@@ -67,7 +67,7 @@ public class FragmentAvatarActivity extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = ViewModelProviders.of(this).get(FragmentAvatarActivityViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity()).get(FragmentAvatarActivityViewModel.class);
         setupView();
 //        getIntentData();
 
@@ -233,10 +233,5 @@ public class FragmentAvatarActivity extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        onBackPressed();
-//        return true;
-//    }
 
 }

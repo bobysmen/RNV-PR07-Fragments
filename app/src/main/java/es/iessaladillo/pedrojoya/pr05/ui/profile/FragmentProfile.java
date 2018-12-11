@@ -53,7 +53,7 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = ViewModelProviders.of(this).get(FragmentProfileViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity()).get(FragmentProfileViewModel.class);
         setupView();
         //for change orientation
 //        if (savedInstanceState==null) {

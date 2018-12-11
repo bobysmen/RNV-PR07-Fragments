@@ -1,5 +1,6 @@
 package es.iessaladillo.pedrojoya.pr05.ui.mainViewCard;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,15 @@ import es.iessaladillo.pedrojoya.pr05.R;
 import es.iessaladillo.pedrojoya.pr05.data.local.DataBaseUser;
 import es.iessaladillo.pedrojoya.pr05.data.local.model.User;
 import es.iessaladillo.pedrojoya.pr05.databinding.FragmentCardBinding;
+import es.iessaladillo.pedrojoya.pr05.ui.main.MainActivityViewModel;
 
 public class FragmentViewCard extends Fragment {
 
     private FragmentCardBinding b;
     private FragmentViewCardViewModel viewModel;
+    private MainActivityViewModel viewModelActivity;
     private FragmentViewCardAdapter listAdapter;
+    private FragmentViewCard.addNewUserListener listener;
 
     @Nullable
     @Override
@@ -32,26 +36,48 @@ public class FragmentViewCard extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = ViewModelProviders.of(this, new FragmentViewCardViewModelFactory(new DataBaseUser()))
+        viewModelActivity = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity(), new FragmentViewCardViewModelFactory(new DataBaseUser()))
                 .get(FragmentViewCardViewModel.class);
         setupView();
         observeUsers();
     }
 
-        private void setupView() {
-        listAdapter = new FragmentViewCardAdapter(position -> deleteUser(listAdapter.getItem(position)));/*, position -> editIntentUser(listAdapter.getItem(position)));*/
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listener = (addNewUserListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(
+                    context.toString() + " must implement FragmentViewCard.addNewUserListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        listener=null;
+        super.onDetach();
+    }
+
+    private void setupView() {
+        listAdapter = new FragmentViewCardAdapter(position -> deleteUser(listAdapter.getItem(position)), position -> editUser(listAdapter.getItem(position)));
         b.lstUsers.setHasFixedSize(true);
         b.lstUsers.setLayoutManager(new GridLayoutManager(getContext(),
                 getResources().getInteger(R.integer.main_lstUsers_columns)));
         b.lstUsers.setItemAnimator(new DefaultItemAnimator());
         b.lstUsers.setAdapter(listAdapter);
 
-//        b.lblEmptyView.setOnClickListener(v -> addIntentUser());
-//
-//        b.fab.setOnClickListener(v -> addIntentUser());
+        b.lblEmptyView.setOnClickListener(v -> listener.addNewUser());
+
+        b.fab.setOnClickListener(v -> listener.addNewUser());
     }
 
-        private void observeUsers() {
+    private void editUser(User user) {
+        viewModelActivity.setUser(user);
+    }
+
+    private void observeUsers() {
         viewModel.getUsers().observe(this, users -> {
             listAdapter.submitList(users);
             b.lblEmptyView.setVisibility(users.size() == 0 ? View.VISIBLE : View.INVISIBLE);
@@ -60,6 +86,10 @@ public class FragmentViewCard extends Fragment {
 
         private void deleteUser(User user) {
         viewModel.deleteUser(user);
+    }
+
+    public interface addNewUserListener {
+        void addNewUser();
     }
 
     //    public static final int RC_EDIT = 1;

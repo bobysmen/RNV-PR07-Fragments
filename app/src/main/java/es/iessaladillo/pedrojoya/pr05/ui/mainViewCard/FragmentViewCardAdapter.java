@@ -19,8 +19,9 @@ import es.iessaladillo.pedrojoya.pr05.data.local.model.User;
 public class FragmentViewCardAdapter extends ListAdapter<User, FragmentViewCardAdapter.ViewHolder> {
 
     private final OnUserClickListenerDelete onUserClickListenerDelete;
+    private final OnUserClickListenerEdit onUserClickListenerEdit;
 
-    public FragmentViewCardAdapter(OnUserClickListenerDelete onUserClickListenerDelete) {
+    public FragmentViewCardAdapter(OnUserClickListenerDelete onUserClickListenerDelete, OnUserClickListenerEdit onUserClickListenerEdit) {
         super(new DiffUtil.ItemCallback<User>(){
 
             @Override
@@ -38,6 +39,7 @@ public class FragmentViewCardAdapter extends ListAdapter<User, FragmentViewCardA
             }
         });
         this.onUserClickListenerDelete = onUserClickListenerDelete;
+        this.onUserClickListenerEdit = onUserClickListenerEdit;
     }
 
     @NonNull
@@ -45,7 +47,7 @@ public class FragmentViewCardAdapter extends ListAdapter<User, FragmentViewCardA
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(
                 LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.fragment_card_item, parent, false), onUserClickListenerDelete);
+                        .inflate(R.layout.fragment_card_item, parent, false), onUserClickListenerDelete, onUserClickListenerEdit);
     }
 
     @Override
@@ -74,7 +76,7 @@ public class FragmentViewCardAdapter extends ListAdapter<User, FragmentViewCardA
         private final Button btnEdit;
         private final Button btnDelete;
 
-        public ViewHolder(@NonNull View itemView, OnUserClickListenerDelete onUserClickListenerDelete) {
+        public ViewHolder(@NonNull View itemView, OnUserClickListenerDelete onUserClickListenerDelete, OnUserClickListenerEdit onUserClickListenerEdit) {
             super(itemView);
             lblName = ViewCompat.requireViewById(itemView, R.id.lblName);
             lblEmail = ViewCompat.requireViewById(itemView, R.id.lblEmail);
@@ -83,6 +85,7 @@ public class FragmentViewCardAdapter extends ListAdapter<User, FragmentViewCardA
             btnEdit = ViewCompat.requireViewById(itemView, R.id.itemButtonEdit);
             btnDelete = ViewCompat.requireViewById(itemView, R.id.itemButtonDelete);
             btnDelete.setOnClickListener(v -> onUserClickListenerDelete.onItemClick(getAdapterPosition()));
+            btnEdit.setOnClickListener(v -> onUserClickListenerEdit.onItemClick(getAdapterPosition()));
         }
 
         void bind(User user){
